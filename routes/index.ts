@@ -1,13 +1,18 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import usersRoutes from './users';
-import postsRoutes from './posts';
-import commentsRoutes from './comments';
+import authRoutes from "./auth";
+import usersRoutes from "./users";
+import postsRoutes from "./posts";
+import commentsRoutes from "./comments";
+
+import { auth } from "../middlewares/auth";
 
 const router = Router();
 
-router.use('/users', usersRoutes)
-router.use('/posts', postsRoutes)
-router.use('/comments', commentsRoutes);
+router.use("/auth", authRoutes);
+router.use("/users", auth, usersRoutes);
+router.use("/posts", auth, postsRoutes);
+router.use("/comments", auth, commentsRoutes);
+
 
 export default router;
