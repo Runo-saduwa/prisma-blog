@@ -44,7 +44,11 @@ router.get("/", async (req: Request, res: Response) => {
   try {
     const posts = await prisma.post.findMany({
       include: {
-        likes: true,
+        likes: {
+          include: {
+            users: true, // This includes the User details for each Like
+          },
+        },
         author: true,
       },
     });
