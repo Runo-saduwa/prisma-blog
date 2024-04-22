@@ -46,7 +46,7 @@ router.get("/", async (req: Request, res: Response) => {
       include: {
         likes: {
           include: {
-            users: true, // This includes the User details for each Like
+            user: true, // This includes the User details for each Like
           },
         },
         author: true,

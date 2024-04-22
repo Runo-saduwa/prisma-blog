@@ -12,12 +12,12 @@ router.post("/", async (req: Request, res: Response) => {
     const { userId, postId } = req.body;
     const like = await prisma.like.create({
       data: {
-        posts: {
+        post: {
           connect: {
             id: postId,
           },
         },
-        users: {
+        user: {
           connect: {
             id: userId,
           },
